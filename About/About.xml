@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>ResearchPause</name>
+    <author>Shrimpee</author>
+    <packageId>Shrimpee.ResearchPause</packageId>
+    <supportedVersions>
+        <li>1.2</li>
+    </supportedVersions>
+    <description>Just a simple mod to pause the game while the research tab is open and after a the current research has finished.</description>
+    <loadAfter>
+        <li>Ludeon.RimWorld</li>
+        <li>Ludeon.RimWorld.Royalty</li>
+    </loadAfter>
+</ModMetaData>
