@@ -1,3 +1,8 @@
+# Workshop Page
+The easiest way to install this mod is by subscribing from the Steam workshop.
+
+https://steamcommunity.com/sharedfiles/filedetails/?id=2348520530
+
 # Getting started developing
 - For easiest setup, clone into `steamapps\common\RimWorld\Mods\ResearchPause`
 - Copy `0Harmony.dll` to `Source-DLLs\`
