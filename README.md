@@ -1,3 +1,5 @@
+![ResearchPause Preview Screenshot](About/Preview.png)
+
 # Workshop Page
 The easiest way to install this mod is by subscribing from the Steam workshop.
 
