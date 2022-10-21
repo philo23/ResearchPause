@@ -19,8 +19,9 @@
     <description>Just a simple mod to pause the game while the research tab is open and after a the current research has finished.</description>
     <loadAfter>
         <li>brrainz.harmony</li>
-        <li>Ludeon.RimWorld</li>
-        <li>Ludeon.RimWorld.Royalty</li>
-        <li>Ludeon.RimWorld.Ideology</li>
+        <li>ludeon.rimworld</li>
+        <li>ludeon.rimworld.royalty</li>
+        <li>ludeon.rimworld.ideology</li>
+        <li>ludeon.rimworld.biotech</li>
     </loadAfter>
 </ModMetaData>
