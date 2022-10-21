@@ -1,23 +1,20 @@
-﻿using RimWorld;
+﻿using UnityEngine;
 using Verse;
-using System.Reflection;
-using HarmonyLib;
-using UnityEngine;
 
 namespace ResearchPause
 {
     public class ResearchPauseMod : Mod
     {
-        ResearchPauseSettings settings;
+        private readonly ResearchPauseSettings settings;
 
         public ResearchPauseMod(ModContentPack content) : base(content)
         {
-            this.settings = GetSettings<ResearchPauseSettings>();
+            settings = GetSettings<ResearchPauseSettings>();
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Listing_Standard listingStandard = new Listing_Standard();
+            var listingStandard = new Listing_Standard();
             listingStandard.Begin(inRect);
             listingStandard.CheckboxLabeled(
                 "Automatically pause when a pawn finishes researching",

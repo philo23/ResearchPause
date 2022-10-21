@@ -1,7 +1,7 @@
-﻿using RimWorld;
-using Verse;
-using System.Reflection;
+﻿using System.Reflection;
 using HarmonyLib;
+using RimWorld;
+using Verse;
 
 namespace ResearchPause
 {
@@ -16,16 +16,19 @@ namespace ResearchPause
     }
 
     [HarmonyPatch(typeof(ResearchManager), "FinishProject")]
-    class Patch_ResearchManager_FinishProject
+    internal class Patch_ResearchManager_FinishProject
     {
-        static void Prefix(bool doCompletionDialog)
+        private static void Prefix(bool doCompletionDialog)
         {
-            bool pauseOnResearchFinished = LoadedModManager
+            if (!LoadedModManager
                 .GetMod<ResearchPauseMod>()
                 .GetSettings<ResearchPauseSettings>()
-                .pauseOnResearchFinished;
+                .pauseOnResearchFinished)
+            {
+                return;
+            }
 
-            if (Current.ProgramState == ProgramState.Playing && pauseOnResearchFinished)
+            if (Current.ProgramState == ProgramState.Playing)
             {
                 TickManager_Helper.PauseIfUnpaused();
             }
@@ -33,16 +36,19 @@ namespace ResearchPause
     }
 
     [HarmonyPatch(typeof(Window), nameof(Window.PreOpen))]
-    class Patch_Window_PreOpen
+    internal class Patch_Window_PreOpen
     {
-        static void Prefix(Window __instance)
+        private static void Prefix(Window __instance)
         {
-            bool pauseOnResearchWindowOpen = LoadedModManager
+            if (!LoadedModManager
                 .GetMod<ResearchPauseMod>()
                 .GetSettings<ResearchPauseSettings>()
-                .pauseOnResearchWindowOpen;
+                .pauseOnResearchWindowOpen)
+            {
+                return;
+            }
 
-            if (__instance is MainTabWindow_Research && pauseOnResearchWindowOpen)
+            if (__instance is MainTabWindow_Research)
             {
                 TickManager_Helper.PauseIfUnpaused();
             }
@@ -50,16 +56,19 @@ namespace ResearchPause
     }
 
     [HarmonyPatch(typeof(Window), nameof(Window.PreClose))]
-    class Patch_Window_PreClose
+    internal class Patch_Window_PreClose
     {
-        static void Prefix(Window __instance)
+        private static void Prefix(Window __instance)
         {
-            bool pauseOnResearchWindowOpen = LoadedModManager
+            if (!LoadedModManager
                 .GetMod<ResearchPauseMod>()
                 .GetSettings<ResearchPauseSettings>()
-                .pauseOnResearchWindowOpen;
+                .pauseOnResearchWindowOpen)
+            {
+                return;
+            }
 
-            if (__instance is MainTabWindow_Research && pauseOnResearchWindowOpen)
+            if (__instance is MainTabWindow_Research)
             {
                 TickManager_Helper.UnpausedIfPaused();
             }
